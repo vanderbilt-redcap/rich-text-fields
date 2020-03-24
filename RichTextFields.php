@@ -22,10 +22,11 @@ class RichTextFields extends AbstractExternalModule
         callJSfile('tinymce/tinymce.min.js');
 
         $question_by_section = $this->findQuestionBySection($project_id,$instrument);
-        if ($survey_hash != "") {
-            list ($pageFields, $totalPages) = getPageFields($instrument, $question_by_section);
-            list ($saveBtnText, $hideFields, $isLastPage) = setPageNum($pageFields, $totalPages);
-        }
+        $surveyObject = new \Survey();
+
+        list ($pageFields, $totalPages) = $surveyObject::getPageFields($instrument, $question_by_section);
+        list ($saveBtnText, $hideFields, $isLastPage) = $surveyObject::setPageNum($pageFields, $totalPages);
+
         if (!in_array($currentProject->table_pk,$hideFields)) {
             $hideFields[] = $currentProject->table_pk;
         }
