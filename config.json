@@ -1,0 +1,30 @@
+{
+  "name": "Rich Text Fields",
+
+  "namespace": "Vanderbilt\\RichTextFields",
+
+  "authors": [
+    {
+      "name": "Ryan Moore",
+      "email": "datacore@vumc.org",
+      "institution": "Vanderbilt University Medical Center"
+    }
+  ],
+
+  "description": "Extends REDCap tinymce Rich Text Editor option for field labels to data entry text fields.",
+
+  "permissions": [
+    "select_data",
+    "redcap_data_entry_form",
+    "redcap_survey_page"
+  ],
+
+  "project-settings": [
+    {
+      "key": "rich_field",
+      "name": "Field to Have Rich Text Editing (use only valid text fields)",
+      "type": "field-list",
+      "repeatable": true
+    }
+  ]
+}
