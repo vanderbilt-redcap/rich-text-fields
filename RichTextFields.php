@@ -67,16 +67,7 @@ class RichTextFields extends AbstractExternalModule
                     paste_postprocess: function(plugin, args) {
                         args.node.innerHTML = cleanHTML(args.node.innerHTML);
                     },
-                    remove_linebreaks: true,
-                    content_style: 'body { font-weight: bold; }', // Match REDCap's default bold label style.
-                    formats: {
-                        bold: {
-                            inline: 'span',
-                            styles: {
-                                'font-weight': 'normal'  // Make the 'bold' option function like an 'unbold' instead.
-                            }
-                        }
-                    }
+                    remove_linebreaks: true
                 });
             });
             </script>";
