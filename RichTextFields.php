@@ -19,8 +19,6 @@ class RichTextFields extends AbstractExternalModule
         $currentProject = new \Project($project_id);
         $currentMeta = $currentProject->metadata;
 
-        callJSfile('tinymce/tinymce.min.js');
-
         $question_by_section = $this->findQuestionBySection($project_id,$instrument);
         $surveyObject = new \Survey();
 
@@ -48,14 +46,17 @@ class RichTextFields extends AbstractExternalModule
         if (!empty($validFields)) {
             $javaString = "<script>
             $(document).ready(function() {
+                loadJS(app_path_webroot+'Resources/webpack/css/tinymce/tinymce.min.js');
                 tinymce.init({
                     selector: '".implode(",",$validFields)."',
                     height: 350,
                     branding: false,
                     statusbar: true,
                     menubar: false,
+                    license_key: 'gpl',
+                    promotion: false,
                     elementpath: false, // Hide this, since it oddly renders below the textarea.
-                    plugins: ['paste autolink lists link searchreplace code fullscreen table directionality'],
+                    plugins: 'paste autolink lists link searchreplace code fullscreen table directionality',
                     toolbar1: 'bold italic link | alignleft aligncenter alignright alignjustify | table',
                     toolbar2: 'bullist numlist outdent indent | forecolor backcolor | removeformat | undo redo',
                     contextmenu: \"copy paste | link image inserttable | cell row column deletetable\",
